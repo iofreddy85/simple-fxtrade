@@ -3,10 +3,9 @@
   "version": "1.1.7",
   "description": "A node js wrapper for the Oanda Rest v20 api to make things really simple",
   "main": "index.js",
-  "browser": "dist/browser.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/lteacher/simple-fxtrade.git"
+    "url": "https://github.com/iofreddy85/simple-fxtrade.git"
   },
   "engines": {
     "node": ">=7.7.1"
