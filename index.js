@@ -9,6 +9,7 @@ const axios = require('axios');
 const resources = require('./lib');
 const Subscription = require('./lib/subscription');
 const {omit, assign} = require('./lib/utils');
+const https = require('https');
 
 function SimpleFx() {
   // Return a replacement with the new httpMethod
@@ -51,8 +52,10 @@ function SimpleFx() {
       url: req.url != null ? req.url : this.endpoint(route),
       headers: {
         Authorization: `Bearer ${this.options.apiKey}`,
-        'Accept-Datetime-Format': this.options.dateTimeFormat
+        'Accept-Datetime-Format': this.options.dateTimeFormat,
+        'Accept-Encoding': 'gzip, deflate'
       },
+      httpsAgent: new https.Agent({ keepAlive: true }),
       data: req.body,
       params: omit(req, 'body'),
       responseType
@@ -84,8 +87,10 @@ function SimpleFx() {
       url: req.url != null ? req.url : this.endpoint(route, 'stream'),
       headers: {
         Authorization: `Bearer ${this.options.apiKey}`,
-        'Accept-Datetime-Format': this.options.dateTimeFormat
+        'Accept-Datetime-Format': this.options.dateTimeFormat,
+        'Accept-Encoding': 'gzip, deflate'
       },
+      httpsAgent: new https.Agent({ keepAlive: true }),
       params: omit(req, 'body'),
       responseType: 'stream'
     };
