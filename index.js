@@ -50,6 +50,7 @@ function SimpleFx() {
     const options = {
       method,
       url: req.url != null ? req.url : this.endpoint(route),
+      timeout: 60000,
       headers: {
         Authorization: `Bearer ${this.options.apiKey}`,
         'Accept-Datetime-Format': this.options.dateTimeFormat,
@@ -85,6 +86,7 @@ function SimpleFx() {
     const options = {
       method: 'GET',
       url: req.url != null ? req.url : this.endpoint(route, 'stream'),
+      timeout: 60000,
       headers: {
         Authorization: `Bearer ${this.options.apiKey}`,
         'Accept-Datetime-Format': this.options.dateTimeFormat,
